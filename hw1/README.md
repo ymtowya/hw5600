@@ -126,3 +126,31 @@ Stats: IO Busy  5 (45.45%)
 to switch to another process whenever one is WAITING for I/O (-l
 1:0,4:100 -c -S SWITCH ON IO). What happens now? Use -c
 and -p to confirm that you are right.*
+
+A: This time it will return to what we have in Question 3 that while P0 is waiting for I/O, P1 will be running, and the total time for these processed will decrease. This is because now we switch from P0 to P1 on I/O waiting time.  
+
+And the running result is like:
+```
+mtowya@TowyadeMacBook-Pro cpu-intro % ./process-run.py -l 1:0,4:100 -c -p -S SWITCH_ON_IO
+Time        PID: 0        PID: 1           CPU           IOs
+  1         RUN:io         READY             1          
+  2        WAITING       RUN:cpu             1             1
+  3        WAITING       RUN:cpu             1             1
+  4        WAITING       RUN:cpu             1             1
+  5        WAITING       RUN:cpu             1             1
+  6        WAITING          DONE                           1
+  7*   RUN:io_done          DONE             1          
+
+Stats: Total Time 7
+Stats: CPU Busy 6 (85.71%)
+Stats: IO Busy  5 (71.43%)
+```
+
+* Question 6
+
+*Q: What happens when you
+run this combination of processes? (Run ./process-run.py -l
+3:0,5:100,5:100,5:100 -S SWITCH ON IO -I IO RUN LATER
+-c -p) Are system resources being effectively utilized?*
+
+A: 

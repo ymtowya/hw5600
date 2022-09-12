@@ -250,10 +250,10 @@ or -s 2 -l 3:50,3:50 or -s 3 -l 3:50,3:50. See if you can
 predict how the trace will turn out. What happens when you use
 the flag -I IO RUN IMMEDIATE vs. -I IO RUN LATER? What happens when you use -S SWITCH ON IO vs. -S SWITCH ON END?*
 
-A: It's hard to predict the trace because this time it's all in random. Every time the seed -s changes, the process will change. We cannot predict which process will issue an I/O, or the order or operations inside the process. Additionally, the total time and efficiency will all change.<br>
-IO_RUN_IMMEDIATE will resume the process once the I/O it issued is completed, while IO_RUN_LATER will keep placing the process on READY till all other process are DONE or WAITING, otherwise other processes will keep running. <br>
-SWITCH_ON_IO will run other processes when the current process is waiting for an I/O, making full use of the resources and save time, while SWITCH_ON_END will only switch to other processes when the current process is done. It will be a waste of time because all processes have to wait for the current I/O and do nothing simultaneously.<br>
-In general and in most practices, to make it more efficient, go with SWITCH_ON_IO and IO_RUN_IMMEDIATE.<br>
+A: <br>It's hard to predict the trace because this time it's all in random. Every time the seed -s changes, the process will change. We cannot predict which process will issue an I/O, or the order or operations inside the process. Additionally, the total time and efficiency will all change.<br><br>
+IO_RUN_IMMEDIATE will resume the process once the I/O it issued is completed, while IO_RUN_LATER will keep placing the process on READY after its I/O completes, till all other process are DONE or WAITING, otherwise other processes has the running priority. <br><br>
+SWITCH_ON_IO will run other processes when the current process is waiting for an I/O, making full use of the resources and save time; while SWITCH_ON_END will only switch to other processes when the current process is done. It will be a waste of time because all processes have to wait for the current I/O and do nothing simultaneously.<br><br>
+In general and in most practices, to make it more efficient, go with SWITCH_ON_IO and IO_RUN_IMMEDIATE.<br><br>
 
 Some running results:
 ```

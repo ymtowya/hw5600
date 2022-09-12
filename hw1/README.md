@@ -7,7 +7,7 @@ What should the CPU utilization be
 (e.g., the percent of time the CPU is in use?) 
 Why do you know this? Use the -c and -p flags to see if you were right.*
 
-A:The CPU utilization would be 100% because there are no IOs, only CPU dealing with the instructions.\
+A:The CPU utilization would be 100% because there are no IOs, only CPU dealing with the instructions. \
 And run the flags with -c to certify this:
 
 ```
@@ -37,8 +37,8 @@ CPU), and one that simply issues an I/O and waits for it to be done.
 How long does it take to complete both processes? Use -c and -p
 to find out if you were right.*
 
-A: It would take 11 time units to complete these 2 processes.\
-We get this by adding: 4 (# of P0 instructions) + 1 (for P0 to be DONE) + 5 (# of P1 needs to wait for IO) + 1 (for P1 to be DONE) = 11 in total.\
+A: It would take 11 time units to complete these 2 processes. \
+We get this by adding: 4 (# of P0 instructions) + 1 (for P0 to be DONE) + 5 (# of P1 needs to wait for IO) + 1 (for P1 to be DONE) = 11 in total. \
 
 And as the running result shows:
 
@@ -72,7 +72,7 @@ Total time is 11.
 now? Does switching the order matter? Why? (As always, use -c
 and -p to see if you were right)*
 
-A: After switching the order, the processes are completed in shorted time because P1 can be done while P0 is waiting for IO. The order matters because if the IO process is running first, the other process's instructions can be run in the following time, which cannot be done if not switched.\
+A: After switching the order, the processes are completed in shorted time because P1 can be done while P0 is waiting for IO. The order matters because if the IO process is running first, the other process's instructions can be run in the following time, which cannot be done if not switched. \
 
 And the running result shows:
 ```
@@ -97,7 +97,7 @@ Stats: IO Busy  5 (71.43%)
 -c -S SWITCH ON END), one doing I/O and the other doing CPU
 work?*
 
-A: Unlike what we saw in Question 3, this time the process will not switch to the other process dealing with instructions (i.e. P1) while P0 is waiting for an I/O. This time it will wait for the I/O until P0 is done, meanwhile blocking all the processes from running. P1 can only run after P0 is done.\
+A: Unlike what we saw in Question 3, this time the process will not switch to the other process dealing with instructions (i.e. P1) while P0 is waiting for an I/O. This time it will wait for the I/O until P0 is done, meanwhile blocking all the processes from running. P1 can only run after P0 is done. \
 
 And we can see the running result:
 ```
@@ -122,3 +122,7 @@ Stats: IO Busy  5 (45.45%)
 
 * Question 5
 
+*Q: Now, run the same processes, but with the switching behavior set
+to switch to another process whenever one is WAITING for I/O (-l
+1:0,4:100 -c -S SWITCH ON IO). What happens now? Use -c
+and -p to confirm that you are right.*

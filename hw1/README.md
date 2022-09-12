@@ -207,3 +207,38 @@ Stats: IO Busy  15 (48.39%)
 *Q: Now run the same processes, but with -I IO RUN IMMEDIATE set,
 which immediately runs the process that issued the I/O. How does
 this behavior differ? Why might running a process that just completed an I/O again be a good idea?*
+
+A: This time, as soon as the I/O completes, its 'issuer' process would immediately resume running, cutting in the line. Other processes will wait until it becomes DONE or WAITING again and release the resources.<br>
+This path is a good idea because very often, the process which waited for I/O will possibly issue another I/O again, and it will save resources and time to resume it once I/O is completed, so as to bring the following I/Os forward, and other processes can run while it's WAITING again. In this way, all the processes can be completed in shorter time and in general be more effective.
+<br>
+As the running result shows:
+
+```
+mtowya@TowyadeMacBook-Pro cpu-intro % ./process-run.py -l 3:0,5:100,5:100,5:100 -S SWITCH_ON_IO -I IO_RUN_IMMEDIATE -c -p
+Time        PID: 0        PID: 1        PID: 2        PID: 3           CPU           IOs
+  1         RUN:io         READY         READY         READY             1          
+  2        WAITING       RUN:cpu         READY         READY             1             1
+  3        WAITING       RUN:cpu         READY         READY             1             1
+  4        WAITING       RUN:cpu         READY         READY             1             1
+  5        WAITING       RUN:cpu         READY         READY             1             1
+  6        WAITING       RUN:cpu         READY         READY             1             1
+  7*   RUN:io_done          DONE         READY         READY             1          
+  8         RUN:io          DONE         READY         READY             1          
+  9        WAITING          DONE       RUN:cpu         READY             1             1
+ 10        WAITING          DONE       RUN:cpu         READY             1             1
+ 11        WAITING          DONE       RUN:cpu         READY             1             1
+ 12        WAITING          DONE       RUN:cpu         READY             1             1
+ 13        WAITING          DONE       RUN:cpu         READY             1             1
+ 14*   RUN:io_done          DONE          DONE         READY             1          
+ 15         RUN:io          DONE          DONE         READY             1          
+ 16        WAITING          DONE          DONE       RUN:cpu             1             1
+ 17        WAITING          DONE          DONE       RUN:cpu             1             1
+ 18        WAITING          DONE          DONE       RUN:cpu             1             1
+ 19        WAITING          DONE          DONE       RUN:cpu             1             1
+ 20        WAITING          DONE          DONE       RUN:cpu             1             1
+ 21*   RUN:io_done          DONE          DONE          DONE             1          
+
+Stats: Total Time 21
+Stats: CPU Busy 21 (100.00%)
+Stats: IO Busy  15 (71.43%)
+```

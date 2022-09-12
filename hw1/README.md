@@ -154,7 +154,7 @@ run this combination of processes? (Run ./process-run.py -l
 -c -p) Are system resources being effectively utilized?*
 
 A: After changing this -I flag to IO_RUN_LATER, the process would not resume and run after its I/O is completed. Instead, other processes (of CPU instructions) will be running, and the initial I/O process will remain at the 'READY' state, waiting until all other processes are not running, then it will be able to run. In this case, it's P0 kept on READY state while P1~P3 runs.<br>
-No. it's not effective. Because P0 consumed extra time units to complete othere I/Os while all other processed are DONE already and waiting for P0. It's a waste of resource.
+No. it's not effective. Because P0 consumed extra time units to complete othere I/Os while all other processes are DONE already and waiting for P0. It's a waste of resource.
 
 As shown by the running result:
 
@@ -201,4 +201,6 @@ Stats: IO Busy  15 (48.39%)
 
 * Question 7
 
-*Q: *
+*Q: Now run the same processes, but with -I IO RUN IMMEDIATE set,
+which immediately runs the process that issued the I/O. How does
+this behavior differ? Why might running a process that just completed an I/O again be a good idea?*

@@ -242,3 +242,12 @@ Stats: Total Time 21
 Stats: CPU Busy 21 (100.00%)
 Stats: IO Busy  15 (71.43%)
 ```
+
+* Question 8
+
+*Q: Now run with some randomly generated processes: -s 1 -l 3:50,3:50
+or -s 2 -l 3:50,3:50 or -s 3 -l 3:50,3:50. See if you can
+predict how the trace will turn out. What happens when you use
+the flag -I IO RUN IMMEDIATE vs. -I IO RUN LATER? What happens when you use -S SWITCH ON IO vs. -S SWITCH ON END?*
+
+A: It's hard to predict the trace because this time it's all in random. We cannot predict which process will issue an I/O, or the issue order inside the process. <br>

@@ -1,10 +1,10 @@
-## HW 1
+# HW 1
 
 * Quick Link
 
-[Q1](#Question1) | [Q2](#Question2)
+[Q1](#question-1) | [Q2](#question-2)
 
-* Question 1
+### Question 1
 
 *Q:Run process-run.py with the following flags: -l 5:100,5:100.
 What should the CPU utilization be 
@@ -33,7 +33,7 @@ Stats: CPU Busy 10 (100.00%)
 Stats: IO Busy  0 (0.00%)
 ```
 
-* Question 2
+### Question 2
 
 *Q:Now run with these flags: ./process-run.py -l 4:100,1:0.
 These flags specify one process with 4 instructions (all to use the
@@ -70,7 +70,7 @@ Stats: IO Busy  5 (45.45%)
 
 Total time is 11.
 
-* Question 3
+### Question 3
 
 *Q: Switch the order of the processes: -l 1:0,4:100. What happens
 now? Does switching the order matter? Why? (As always, use -c
@@ -95,7 +95,7 @@ Stats: CPU Busy 6 (85.71%)
 Stats: IO Busy  5 (71.43%)
 ```
 
-* Question 4
+### Question 4
 
 *Q: What happens when you run the following two processes (-l 1:0,4:100
 -c -S SWITCH ON END), one doing I/O and the other doing CPU
@@ -124,7 +124,7 @@ Stats: CPU Busy 6 (54.55%)
 Stats: IO Busy  5 (45.45%)
 ```
 
-* Question 5
+### Question 5
 
 *Q: Now, run the same processes, but with the switching behavior set
 to switch to another process whenever one is WAITING for I/O (-l
@@ -150,7 +150,7 @@ Stats: CPU Busy 6 (85.71%)
 Stats: IO Busy  5 (71.43%)
 ```
 
-* Question 6
+### Question 6
 
 *Q: What happens when you
 run this combination of processes? (Run ./process-run.py -l
@@ -203,7 +203,7 @@ Stats: CPU Busy 21 (67.74%)
 Stats: IO Busy  15 (48.39%)
 ```
 
-* Question 7
+### Question 7
 
 *Q: Now run the same processes, but with -I IO RUN IMMEDIATE set,
 which immediately runs the process that issued the I/O. How does
@@ -244,7 +244,7 @@ Stats: CPU Busy 21 (100.00%)
 Stats: IO Busy  15 (71.43%)
 ```
 
-* Question 8
+### Question 8
 
 *Q: Now run with some randomly generated processes: -s 1 -l 3:50,3:50
 or -s 2 -l 3:50,3:50 or -s 3 -l 3:50,3:50. See if you can

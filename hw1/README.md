@@ -250,4 +250,79 @@ or -s 2 -l 3:50,3:50 or -s 3 -l 3:50,3:50. See if you can
 predict how the trace will turn out. What happens when you use
 the flag -I IO RUN IMMEDIATE vs. -I IO RUN LATER? What happens when you use -S SWITCH ON IO vs. -S SWITCH ON END?*
 
-A: It's hard to predict the trace because this time it's all in random. We cannot predict which process will issue an I/O, or the issue order inside the process. <br>
+A: It's hard to predict the trace because this time it's all in random. Every time the seed -s changes, the process will change. We cannot predict which process will issue an I/O, or the order or operations inside the process. Additionally, the total time and efficiency will all change.<br>
+IO_RUN_IMMEDIATE will resume the process once the I/O it issued is completed, while IO_RUN_LATER will keep placing the process on READY till all other process are DONE or WAITING, otherwise other processes will keep running. <br>
+SWITCH_ON_IO will run other processes when the current process is waiting for an I/O, making full use of the resources and save time, while SWITCH_ON_END will only switch to other processes when the current process is done. It will be a waste of time because all processes have to wait for the current I/O and do nothing simultaneously.<br>
+In general and in most practices, to make it more efficient, go with SWITCH_ON_IO and IO_RUN_IMMEDIATE.<br>
+
+Some running results:
+```
+mtowya@TowyadeMacBook-Pro cpu-intro % ./process-run.py -s 1 -l 3:50,3:50 -S SWITCH_ON_IO -I IO_RUN_IMMEDIATE -c -p
+Time        PID: 0        PID: 1           CPU           IOs
+  1        RUN:cpu         READY             1          
+  2         RUN:io         READY             1          
+  3        WAITING       RUN:cpu             1             1
+  4        WAITING       RUN:cpu             1             1
+  5        WAITING       RUN:cpu             1             1
+  6        WAITING          DONE                           1
+  7        WAITING          DONE                           1
+  8*   RUN:io_done          DONE             1          
+  9         RUN:io          DONE             1          
+ 10        WAITING          DONE                           1
+ 11        WAITING          DONE                           1
+ 12        WAITING          DONE                           1
+ 13        WAITING          DONE                           1
+ 14        WAITING          DONE                           1
+ 15*   RUN:io_done          DONE             1          
+
+Stats: Total Time 15
+Stats: CPU Busy 8 (53.33%)
+Stats: IO Busy  10 (66.67%)
+
+mtowya@TowyadeMacBook-Pro cpu-intro % ./process-run.py -s 2 -l 3:50,3:50 -S SWITCH_ON_IO -I IO_RUN_IMMEDIATE -c -p
+Time        PID: 0        PID: 1           CPU           IOs
+  1         RUN:io         READY             1          
+  2        WAITING       RUN:cpu             1             1
+  3        WAITING        RUN:io             1             1
+  4        WAITING       WAITING                           2
+  5        WAITING       WAITING                           2
+  6        WAITING       WAITING                           2
+  7*   RUN:io_done       WAITING             1             1
+  8         RUN:io       WAITING             1             1
+  9*       WAITING   RUN:io_done             1             1
+ 10        WAITING        RUN:io             1             1
+ 11        WAITING       WAITING                           2
+ 12        WAITING       WAITING                           2
+ 13        WAITING       WAITING                           2
+ 14*   RUN:io_done       WAITING             1             1
+ 15        RUN:cpu       WAITING             1             1
+ 16*          DONE   RUN:io_done             1          
+
+Stats: Total Time 16
+Stats: CPU Busy 10 (62.50%)
+Stats: IO Busy  14 (87.50%)
+
+mtowya@TowyadeMacBook-Pro cpu-intro % ./process-run.py -s 3 -l 3:50,3:50 -S SWITCH_ON_IO -I IO_RUN_IMMEDIATE -c -p
+Time        PID: 0        PID: 1           CPU           IOs
+  1        RUN:cpu         READY             1          
+  2         RUN:io         READY             1          
+  3        WAITING        RUN:io             1             1
+  4        WAITING       WAITING                           2
+  5        WAITING       WAITING                           2
+  6        WAITING       WAITING                           2
+  7        WAITING       WAITING                           2
+  8*   RUN:io_done       WAITING             1             1
+  9*         READY   RUN:io_done             1          
+ 10          READY        RUN:io             1          
+ 11        RUN:cpu       WAITING             1             1
+ 12           DONE       WAITING                           1
+ 13           DONE       WAITING                           1
+ 14           DONE       WAITING                           1
+ 15           DONE       WAITING                           1
+ 16*          DONE   RUN:io_done             1          
+ 17           DONE       RUN:cpu             1          
+
+Stats: Total Time 17
+Stats: CPU Busy 9 (52.94%)
+Stats: IO Busy  11 (64.71%)
+```

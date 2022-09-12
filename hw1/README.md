@@ -2,8 +2,9 @@
 
 * Quick Link
 
+[Q1](#Question1) | [Q2](#Question2)
 
-* Question 1
+# Question 1
 
 *Q:Run process-run.py with the following flags: -l 5:100,5:100.
 What should the CPU utilization be 
@@ -32,7 +33,7 @@ Stats: CPU Busy 10 (100.00%)
 Stats: IO Busy  0 (0.00%)
 ```
 
-* Question 2
+# Question 2
 
 *Q:Now run with these flags: ./process-run.py -l 4:100,1:0.
 These flags specify one process with 4 instructions (all to use the
@@ -69,7 +70,7 @@ Stats: IO Busy  5 (45.45%)
 
 Total time is 11.
 
-* Question 3
+# Question 3
 
 *Q: Switch the order of the processes: -l 1:0,4:100. What happens
 now? Does switching the order matter? Why? (As always, use -c
@@ -94,7 +95,7 @@ Stats: CPU Busy 6 (85.71%)
 Stats: IO Busy  5 (71.43%)
 ```
 
-* Question 4
+# Question 4
 
 *Q: What happens when you run the following two processes (-l 1:0,4:100
 -c -S SWITCH ON END), one doing I/O and the other doing CPU

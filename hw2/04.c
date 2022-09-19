@@ -11,7 +11,15 @@ int main() {
         if (childPid < 0) {
             exit(1);
         } else if (childPid == 0) {
-            printf("fork_%d\n", i);
+            switch (i)
+            {
+            case /* constant-expression */:
+                /* code */
+                break;
+            
+            default:
+                break;
+            }
             exit(1);
         } else {
             printf("parent_%d waiting\n", i);

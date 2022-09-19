@@ -9,13 +9,13 @@ int main() {
     if (childPid < 0) {
         exit(1); // failed fork
     } else if (childPid == 0) {
-        // parent process
-        re = waitpid(childPid, NULL, 0);
-        printf("goodbye\n");
+        // child process
+        printf("hello\n");
         exit(1);
     } else {
-        // child
-        printf("hello\n");
+        // parent
+        re = waitpid(childPid, NULL, 0);
+        printf("goodbye\n");
         exit(1);
     }
     printf("%d\n", re);

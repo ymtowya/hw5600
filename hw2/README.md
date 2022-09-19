@@ -734,8 +734,8 @@ a
 tree, but then asks you to fill in the actions that took place. By looking at the tree, can you determine the exact actions that took place?
 In which cases can you tell? In which can’t you tell??*
 
-We can see the number of steps and the final process tree. With the given information, we can know that some processed are forked during the program, but unknown of in which order they took place, and who are their parents (because it could be the case that they became orphan processes and re-parented). Only those processes whose parents are not 'a' (or the `init` process) can be determined that their parent once `fork()`ed and got them as children process.
-<br><br>
+We can see the number of steps and the final process tree. With the given information, we can know that some processed are forked during the program, but unknown of in which order they took place, and who are their parents (because it could be the case that they became orphan processes and re-parented). Only those processes whose parents are not 'a' (or the `init` process) can be determined that their parent once `fork()`ed and got them as children process.<br /><br />
+
 For instance,
 ```
 E:\proj\cs\hw5600\hw2>python fork.py -s 71 -F -a 10 -t

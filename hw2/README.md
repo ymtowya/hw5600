@@ -854,6 +854,14 @@ Parent: 76383
 ```
 It is useful when the process is a parent and knows the child Pid it is waiting for.
 
+### Q7
+
+*Q:Write a program that creates a child process, and then in the child
+closes standard output (STDOUT FILENO). What happens if the child
+calls printf() to print some output after closing the descriptor?*
+
+A: There will be no output.
+
 ## Chapter 6
 
 ## Chapter 7

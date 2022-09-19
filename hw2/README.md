@@ -881,6 +881,16 @@ pipe() system call.*
 
 A: as `08.c` shows.
 
+```
+mtowya@TowyadeMacBook-Pro hw2 % gcc -o p8 08.c -Wall
+mtowya@TowyadeMacBook-Pro hw2 % ./p8                
+child 1
+child 2
+Output: :Hello
+
+Read: :Hello
+```
+
 ## Chapter 6
 
 ## Chapter 7

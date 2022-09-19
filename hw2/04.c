@@ -11,10 +11,10 @@ int main() {
         if (childPid < 0) {
             exit(1);
         } else if (childPid == 0) {
-            print("parent_%d waiting\n", i);
+            printf("parent_%d waiting\n", i);
             wait(NULL);
         } else {
-            print("fork_%d\n", i);
+            printf("fork_%d\n", i);
         } 
     }
 

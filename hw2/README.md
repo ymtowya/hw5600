@@ -829,6 +829,17 @@ execlp(), execv(), execvp(), and execvpe(). Why do
 you think there are so many variants of the same basic call?
 ?*
 
+A: As shown in the `04.c`.
+
+### Q5
+
+*Q: Write a program that uses wait() to wait for the child process
+to finish in the parent. What does wait() return? What happens if
+you use wait() in the child??*
+
+A: It returns the pid of the returned child. <br />
+In the child it return -1.
+
 ## Chapter 6
 
 ## Chapter 7

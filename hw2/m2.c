@@ -12,10 +12,10 @@ int main() {
     const int loops  = 10;
     struct timeval start, end;
 
-    //cpu_set_t my_set;
-    //CPU_ZERO(&my_set);
-    //CPU_SET(0, &my_set);
-    //sched_setaffinity(0, sizeof(cpu_set_t), &my_set);
+    cpu_set_t my_set;
+    CPU_ZERO(&my_set);
+    CPU_SET(0, &my_set);
+    sched_setaffinity(0, sizeof(cpu_set_t), &my_set);
 
     int p1[2], p2[2];
     char msg1[128], msg2[128];
@@ -24,9 +24,9 @@ int main() {
     }
 
     int pid = fork();
-    //if (sched_setaffinity(getpid(), sizeof(cpu_set_t), &my_set) == -1) {
-    //    exit(-1);
-    //}
+    if (sched_setaffinity(getpid(), sizeof(cpu_set_t), &my_set) == -1) {
+       exit(-1);
+    }
 
     if (fork < 0) {
         exit(1);

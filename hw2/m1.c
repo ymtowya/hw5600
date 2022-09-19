@@ -18,7 +18,7 @@ int main() {
 
     for (int i = 0; i < loops; ++i) {
         gettimeofday(&start, NULL);
-        read(myFile, msg, 0);
+        read(myFile, msg, 1);
         gettimeofday(&end, NULL);
         printf("Start: %d - End: %d\nDuration: %d\n", start.tv_usec, end.tv_usec, end.tv_usec - start.tv_usec);
     }

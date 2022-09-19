@@ -840,6 +840,11 @@ you use wait() in the child??*
 A: It returns the pid of the returned child. <br />
 In the child it return -1.
 
+### Q6
+
+*Q:Write a slight modification of the previous program, this time using waitpid() instead of wait(). When would waitpid() be
+useful?*
+
 ## Chapter 6
 
 ## Chapter 7

@@ -12,9 +12,9 @@ int main() {
     if (childPid < 0) {
         exit(1);
     } else if (childPid == 0) {
-        printf("Parent: %d", re);
+        printf("Child: %d\n", re);
     } else {
-        printf("Child: %d", re);
+        printf("Parent: %d\n", re);
     }
 
     return 1;

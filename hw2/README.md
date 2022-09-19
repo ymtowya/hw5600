@@ -845,6 +845,15 @@ In the child it return -1.
 *Q:Write a slight modification of the previous program, this time using waitpid() instead of wait(). When would waitpid() be
 useful?*
 
+A: It takes the parameter of the Pid of the child process.
+```
+mtowya@TowyadeMacBook-Pro hw2 % gcc -o p6 06.c -Wall
+mtowya@TowyadeMacBook-Pro hw2 % ./p6
+Child: -1
+Parent: 76383
+```
+It is useful when the process is a parent and knows the child Pid it is waiting for.
+
 ## Chapter 6
 
 ## Chapter 7

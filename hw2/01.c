@@ -11,8 +11,8 @@ int main() {
     int *re = NULL;
     if (rc < 0) {
         // Fork did not success
-        fprintf(stderr, "Fork did not success.\n");
-        exit(EXIT_FAILURE);
+        printf("Fork did not success.\n");
+        exit(1);
     } else if (rc == 0) {
         printf("x in the child process -init: %d\n", x);
         // change

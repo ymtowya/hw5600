@@ -780,9 +780,21 @@ f forks i
 
 But for the rest part we have no clue yet.
 
-
-
 ## Chapter 5 Code Part
+
+### Q1
+
+*Q:Write a program that calls fork(). Before calling fork(), have the
+main process access a variable (e.g., x) and set its value to something (e.g., 100). What value is the variable in the child process?
+What happens to the variable when both the child and parent change
+the value of x?*
+
+A: The value of the variable in the child process is the same as it was before the `fork()`, i.e. 100.
+<br /> After the inner change, each variable has the value of what their process changed them into, i.e. in my code it's 99 for the child, 101 in the parent.
+
+### Q2
+
+*Q:?*
 
 ## Chapter 6
 

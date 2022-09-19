@@ -13,6 +13,7 @@ int main() {
     }
 
     int pid = fork();
+    int *re = NULL;
     if (pid < 0) {
         // a fail fork
         exit(1);
@@ -30,6 +31,7 @@ int main() {
             exit(1);
         }
         fprintf(ptr, "parent writes\n");
+        wait(re);
     }
 
     return 0;

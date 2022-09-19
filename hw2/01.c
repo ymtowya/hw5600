@@ -8,7 +8,7 @@ int main() {
     // access
     x = 100;
     int rc = fork();
-    int *re;
+    int *re = NULL;
     if (rc < 0) {
         // Fork did not success
         fprintf(stderr, "Fork did not success.\n");

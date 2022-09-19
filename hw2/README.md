@@ -811,7 +811,14 @@ same time?*
 A: Yes, they both can. And they will both write into the file, ordered by the scheduler (which we cannot predict).
 <br/> The result is in the file `02.dat`. I ran p2 for several times to show the random schedule.
 
-Q3
+### Q3
+
+*Q:Write another program using fork(). The child process should
+print “hello”; the parent process should print “goodbye”. You should
+try to ensure that the child process always prints first; can you do
+this without calling wait() in the parent?*
+
+A: As shown in the `03.c`
 
 https://stackoverflow.com/questions/61466564/how-to-make-parent-process-wait-for-child-processes-to-finish
 

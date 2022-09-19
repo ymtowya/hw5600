@@ -4,7 +4,683 @@
 
 ### Q1
 
+*Q: Run ./fork.py -s 10 and see which actions are taken?*
 
+<br>The running result is like this:<br>
+
+```
+E:\proj\cs\hw5600\hw2>python ./fork.py -s 10 -c
+
+ARG seed 10
+ARG fork_percentage 0.7
+ARG actions 5
+ARG action_list
+ARG show_tree False
+ARG just_final False
+ARG leaf_only False
+ARG local_reparent False
+ARG print_style fancy
+ARG solve True
+
+                           Process Tree:
+                               a
+
+Action: a forks b
+                               a
+                               └── b
+Action: a forks c
+                               a
+                               ├── b
+                               └── c
+Action: c EXITS
+                               a
+                               └── b
+Action: a forks d
+                               a
+                               ├── b
+                               └── d
+Action: a forks e
+                               a
+                               ├── b
+                               ├── d
+                               └── e
+E:\proj\cs\hw5600\hw2>python ./fork.py -s 3 -c
+
+ARG seed 3
+ARG fork_percentage 0.7
+ARG actions 5
+ARG action_list
+ARG show_tree False
+ARG just_final False
+ARG leaf_only False
+ARG local_reparent False
+ARG print_style fancy
+ARG solve True
+
+                           Process Tree:
+                               a
+
+Action: a forks b
+                               a
+                               └── b
+Action: b forks c
+                               a
+                               └── b
+                                   └── c
+Action: a forks d
+                               a
+                               ├── b
+                               │   └── c
+                               └── d
+Action: d forks e
+                               a
+                               ├── b
+                               │   └── c
+                               └── d
+                                   └── e
+Action: b forks f
+                               a
+                               ├── b
+                               │   ├── c
+                               │   └── f
+                               └── d
+                                   └── e
+E:\proj\cs\hw5600\hw2>python ./fork.py -s 6 -a 8 -c
+
+ARG seed 6
+ARG fork_percentage 0.7
+ARG actions 8
+ARG action_list
+ARG show_tree False
+ARG just_final False
+ARG leaf_only False
+ARG local_reparent False
+ARG print_style fancy
+ARG solve True
+
+                           Process Tree:
+                               a
+
+Action: a forks b
+                               a
+                               └── b
+Action: b forks c
+                               a
+                               └── b
+                                   └── c
+Action: c forks d
+                               a
+                               └── b
+                                   └── c
+                                       └── d
+Action: d forks e
+                               a
+                               └── b
+                                   └── c
+                                       └── d
+                                           └── e
+Action: e forks f
+                               a
+                               └── b
+                                   └── c
+                                       └── d
+                                           └── e
+                                               └── f
+Action: c EXITS
+                               a
+                               ├── b
+                               ├── d
+                               ├── e
+                               └── f
+Action: e forks g
+                               a
+                               ├── b
+                               ├── d
+                               ├── e
+                               │   └── g
+                               └── f
+Action: e forks h
+                               a
+                               ├── b
+                               ├── d
+                               ├── e
+                               │   ├── g
+                               │   └── h
+                               └── f
+
+```
+
+
+### Q2
+
+*Q: Run the simulator with a large number of actions and vary the for_percentage from 0.1 to 0.9.?*
+
+<br>The running result is like this:<br>
+
+```
+E:\proj\cs\hw5600\hw2>python ./fork.py -f 0.1 -a 15 -c
+
+ARG seed -1
+ARG fork_percentage 0.1
+ARG actions 15
+ARG action_list
+ARG show_tree False
+ARG just_final False
+ARG leaf_only False
+ARG local_reparent False
+ARG print_style fancy
+ARG solve True
+
+                           Process Tree:
+                               a
+
+Action: a forks b
+                               a
+                               └── b
+Action: b EXITS
+                               a
+Action: a forks c
+                               a
+                               └── c
+Action: c EXITS
+                               a
+Action: a forks d
+                               a
+                               └── d
+Action: d EXITS
+                               a
+Action: a forks e
+                               a
+                               └── e
+Action: a forks f
+                               a
+                               ├── e
+                               └── f
+Action: e EXITS
+                               a
+                               └── f
+Action: f EXITS
+                               a
+Action: a forks g
+                               a
+                               └── g
+Action: g EXITS
+                               a
+Action: a forks h
+                               a
+                               └── h
+Action: h EXITS
+                               a
+Action: a forks i
+                               a
+                               └── i
+E:\proj\cs\hw5600\hw2>python ./fork.py -f 0.4 -a 15 -c
+
+ARG seed -1
+ARG fork_percentage 0.4
+ARG actions 15
+ARG action_list
+ARG show_tree False
+ARG just_final False
+ARG leaf_only False
+ARG local_reparent False
+ARG print_style fancy
+ARG solve True
+
+                           Process Tree:
+                               a
+
+Action: a forks b
+                               a
+                               └── b
+Action: a forks c
+                               a
+                               ├── b
+                               └── c
+Action: b forks d
+                               a
+                               ├── b
+                               │   └── d
+                               └── c
+Action: b forks e
+                               a
+                               ├── b
+                               │   ├── d
+                               │   └── e
+                               └── c
+Action: d forks f
+                               a
+                               ├── b
+                               │   ├── d
+                               │   │   └── f
+                               │   └── e
+                               └── c
+Action: c forks g
+                               a
+                               ├── b
+                               │   ├── d
+                               │   │   └── f
+                               │   └── e
+                               └── c
+                                   └── g
+Action: c forks h
+                               a
+                               ├── b
+                               │   ├── d
+                               │   │   └── f
+                               │   └── e
+                               └── c
+                                   ├── g
+                                   └── h
+Action: c EXITS
+                               a
+                               ├── b
+                               │   ├── d
+                               │   │   └── f
+                               │   └── e
+                               ├── g
+                               └── h
+Action: g EXITS
+                               a
+                               ├── b
+                               │   ├── d
+                               │   │   └── f
+                               │   └── e
+                               └── h
+Action: d EXITS
+                               a
+                               ├── b
+                               │   └── e
+                               ├── h
+                               └── f
+Action: b forks i
+                               a
+                               ├── b
+                               │   ├── e
+                               │   └── i
+                               ├── h
+                               └── f
+Action: e forks j
+                               a
+                               ├── b
+                               │   ├── e
+                               │   │   └── j
+                               │   └── i
+                               ├── h
+                               └── f
+Action: e forks k
+                               a
+                               ├── b
+                               │   ├── e
+                               │   │   ├── j
+                               │   │   └── k
+                               │   └── i
+                               ├── h
+                               └── f
+Action: k EXITS
+                               a
+                               ├── b
+                               │   ├── e
+                               │   │   └── j
+                               │   └── i
+                               ├── h
+                               └── f
+Action: e EXITS
+                               a
+                               ├── b
+                               │   └── i
+                               ├── h
+                               ├── f
+                               └── j
+E:\proj\cs\hw5600\hw2>python ./fork.py -f 0.8 -a 15 -c
+
+ARG seed -1
+ARG fork_percentage 0.8
+ARG actions 15
+ARG action_list
+ARG show_tree False
+ARG just_final False
+ARG leaf_only False
+ARG local_reparent False
+ARG print_style fancy
+ARG solve True
+
+                           Process Tree:
+                               a
+
+Action: a forks b
+                               a
+                               └── b
+Action: a forks c
+                               a
+                               ├── b
+                               └── c
+Action: b forks d
+                               a
+                               ├── b
+                               │   └── d
+                               └── c
+Action: d forks e
+                               a
+                               ├── b
+                               │   └── d
+                               │       └── e
+                               └── c
+Action: e EXITS
+                               a
+                               ├── b
+                               │   └── d
+                               └── c
+Action: b forks f
+                               a
+                               ├── b
+                               │   ├── d
+                               │   └── f
+                               └── c
+Action: d forks g
+                               a
+                               ├── b
+                               │   ├── d
+                               │   │   └── g
+                               │   └── f
+                               └── c
+Action: g forks h
+                               a
+                               ├── b
+                               │   ├── d
+                               │   │   └── g
+                               │   │       └── h
+                               │   └── f
+                               └── c
+Action: b forks i
+                               a
+                               ├── b
+                               │   ├── d
+                               │   │   └── g
+                               │   │       └── h
+                               │   ├── f
+                               │   └── i
+                               └── c
+Action: c forks j
+                               a
+                               ├── b
+                               │   ├── d
+                               │   │   └── g
+                               │   │       └── h
+                               │   ├── f
+                               │   └── i
+                               └── c
+                                   └── j
+Action: i forks k
+                               a
+                               ├── b
+                               │   ├── d
+                               │   │   └── g
+                               │   │       └── h
+                               │   ├── f
+                               │   └── i
+                               │       └── k
+                               └── c
+                                   └── j
+Action: b forks l
+                               a
+                               ├── b
+                               │   ├── d
+                               │   │   └── g
+                               │   │       └── h
+                               │   ├── f
+                               │   ├── i
+                               │   │   └── k
+                               │   └── l
+                               └── c
+                                   └── j
+Action: k forks m
+                               a
+                               ├── b
+                               │   ├── d
+                               │   │   └── g
+                               │   │       └── h
+                               │   ├── f
+                               │   ├── i
+                               │   │   └── k
+                               │   │       └── m
+                               │   └── l
+                               └── c
+                                   └── j
+Action: d forks n
+                               a
+                               ├── b
+                               │   ├── d
+                               │   │   ├── g
+                               │   │   │   └── h
+                               │   │   └── n
+                               │   ├── f
+                               │   ├── i
+                               │   │   └── k
+                               │   │       └── m
+                               │   └── l
+                               └── c
+                                   └── j
+Action: d forks o
+                               a
+                               ├── b
+                               │   ├── d
+                               │   │   ├── g
+                               │   │   │   └── h
+                               │   │   ├── n
+                               │   │   └── o
+                               │   ├── f
+                               │   ├── i
+                               │   │   └── k
+                               │   │       └── m
+                               │   └── l
+                               └── c
+                                   └── j
+
+```
+
+
+### Q3
+
+*Q:Switch the output by using the -t flag (e.g., run ./fork.py -t). Given a set of process trees, can you tell which actions were taken?*
+
+<br>Adding the `-t` flag would display the process trees instead of the actions (if there is no `-c` flag).
+<br>The result is like this.<br>
+
+```
+E:\proj\cs\hw5600\hw2>python ./fork.py -f 0.4 -a 10 -s 3
+
+ARG seed 3
+ARG fork_percentage 0.4
+ARG actions 10
+ARG action_list
+ARG show_tree False
+ARG just_final False
+ARG leaf_only False
+ARG local_reparent False
+ARG print_style fancy
+ARG solve False
+
+                           Process Tree:
+                               a
+
+Action: a forks b
+Process Tree?
+Action: b forks c
+Process Tree?
+Action: c forks d
+Process Tree?
+Action: a forks e
+Process Tree?
+Action: c EXITS
+Process Tree?
+Action: b EXITS
+Process Tree?
+Action: e EXITS
+Process Tree?
+Action: d EXITS
+Process Tree?
+Action: a forks f
+Process Tree?
+Action: f EXITS
+Process Tree?
+E:\proj\cs\hw5600\hw2>python ./fork.py -f 0.4 -a 10 -s 3 -t
+
+ARG seed 3
+ARG fork_percentage 0.4
+ARG actions 10
+ARG action_list
+ARG show_tree True
+ARG just_final False
+ARG leaf_only False
+ARG local_reparent False
+ARG print_style fancy
+ARG solve False
+
+                           Process Tree:
+                               a
+
+Action?
+                               a
+                               └── b
+Action?
+                               a
+                               └── b
+                                   └── c
+Action?
+                               a
+                               └── b
+                                   └── c
+                                       └── d
+Action?
+                               a
+                               ├── b
+                               │   └── c
+                               │       └── d
+                               └── e
+Action?
+                               a
+                               ├── b
+                               ├── e
+                               └── d
+Action?
+                               a
+                               ├── e
+                               └── d
+Action?
+                               a
+                               └── d
+Action?
+                               a
+Action?
+                               a
+                               └── f
+Action?
+                               a
+```
+
+### Q4
+
+*Q:Let’s create a specific example: ./fork.py -A a+b,b+c,c+d,c+e,c-. 
+This example has process ’a’ create ’b’, which in turn creates ’c’,
+which then creates ’d’ and ’e’. However, then, ’c’ exits. What do
+you think the process tree should like after the exit? What if you
+use the -R flag?*
+
+<br>When the 'c' exits, its children processes are 'reparented' as the root process 'a'.
+<br>Therefore, all the processes 'b','d',and 'e' are all direct children of 'a'.
+<br> After we use the -R flag, the children processes of 'c' became 'c''s direct parent's children, i.e. 'b''s children. 
+<br>The result is like this.
+
+```
+E:\proj\cs\hw5600\hw2>python ./fork.py -A a+b,b+c,c+d,c+e,c- -c
+
+ARG seed -1
+ARG fork_percentage 0.7
+ARG actions 5
+ARG action_list a+b,b+c,c+d,c+e,c-
+ARG show_tree False
+ARG just_final False
+ARG leaf_only False
+ARG local_reparent False
+ARG print_style fancy
+ARG solve True
+
+                           Process Tree:
+                               a
+
+Action: a forks b
+                               a
+                               └── b
+Action: b forks c
+                               a
+                               └── b
+                                   └── c
+Action: c forks d
+                               a
+                               └── b
+                                   └── c
+                                       └── d
+Action: c forks e
+                               a
+                               └── b
+                                   └── c
+                                       ├── d
+                                       └── e
+Action: c EXITS
+                               a
+                               ├── b
+                               ├── d
+                               └── e
+
+E:\proj\cs\hw5600\hw2>python ./fork.py -A a+b,b+c,c+d,c+e,c- -c -R
+
+ARG seed -1
+ARG fork_percentage 0.7
+ARG actions 5
+ARG action_list a+b,b+c,c+d,c+e,c-
+ARG show_tree False
+ARG just_final False
+ARG leaf_only False
+ARG local_reparent True
+ARG print_style fancy
+ARG solve True
+
+                           Process Tree:
+                               a
+
+Action: a forks b
+                               a
+                               └── b
+Action: b forks c
+                               a
+                               └── b
+                                   └── c
+Action: c forks d
+                               a
+                               └── b
+                                   └── c
+                                       └── d
+Action: c forks e
+                               a
+                               └── b
+                                   └── c
+                                       ├── d
+                                       └── e
+Action: c EXITS
+                               a
+                               └── b
+                                   ├── d
+                                   └── e
+
+```
+
+### Q5
+
+*Q:Run ./fork.py
+-F and see if you can write down the final tree by looking at the
+series of actions generated. Use different random seeds to try this a
+few times.*
 
 ## Chapter 5 Code Part
 

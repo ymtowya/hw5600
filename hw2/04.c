@@ -16,7 +16,6 @@ int main() {
         } else {
             printf("parent_%d waiting\n", i);
             wait(NULL);
-            exit(1);
         } 
     }
 

@@ -4,7 +4,7 @@
 #include <sys/wait.h>
 
 int main() {
-    File *ptr;
+    FILE *ptr = NULL;
     ptr = fopen("02.dat", "a+");
 
     if (ptr == NULL) {
@@ -12,24 +12,24 @@ int main() {
         exit(1);
     }
 
-    int *pid = fork()
+    int pid = fork();
     if (pid < 0) {
         // a fail fork
-
+        exit(1);
     } else if (pid == 0) {
         // child process
         if (ptr == NULL) {
             printf("Child No access!");   
             exit(1);
         }
-        fprintf(ptr, "child writes");
+        fprintf(ptr, "child writes\n");
     } else {
         // parent process
         if (ptr == NULL) {
             printf("Parent No access!");   
             exit(1);
         }
-        fprintf(ptr, "parent writes");
+        fprintf(ptr, "parent writes\n");
     }
 
     return 0;

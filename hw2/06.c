@@ -8,7 +8,7 @@ int main() {
 
     int childPid = fork();
 
-    int re = wait(childPid, NULL, 0);
+    int re = waitpid(childPid, NULL, 0);
 
     if (childPid < 0) {
         exit(1);

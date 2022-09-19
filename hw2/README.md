@@ -840,6 +840,12 @@ you use wait() in the child??*
 A: It returns the pid of the returned child. <br />
 In the child it return -1.
 
+```
+mtowya@TowyadeMacBook-Pro hw2 % ./p5
+Child: -1
+Parent: 76660
+```
+
 ### Q6
 
 *Q:Write a slight modification of the previous program, this time using waitpid() instead of wait(). When would waitpid() be
@@ -861,6 +867,13 @@ closes standard output (STDOUT FILENO). What happens if the child
 calls printf() to print some output after closing the descriptor?*
 
 A: There will be no output.
+
+```
+mtowya@TowyadeMacBook-Pro hw2 % gcc -o p7 07.c -Wall
+mtowya@TowyadeMacBook-Pro hw2 % ./p7
+mtowya@TowyadeMacBook-Pro hw2 % 
+```
+
 
 ## Chapter 6
 

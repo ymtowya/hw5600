@@ -874,6 +874,12 @@ mtowya@TowyadeMacBook-Pro hw2 % ./p7
 mtowya@TowyadeMacBook-Pro hw2 % 
 ```
 
+### Q8
+
+*Q:Write a program that creates two children, and connects the standard output of one to the standard input of the other, using the
+pipe() system call.*
+
+A: as `08.c` shows.
 
 ## Chapter 6
 

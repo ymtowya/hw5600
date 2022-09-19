@@ -682,6 +682,106 @@ Action: c EXITS
 series of actions generated. Use different random seeds to try this a
 few times.*
 
+We tried this for couple times.
+<br>
+First Try
+
+```
+E:\proj\cs\hw5600\hw2>python fork.py -F
+
+                           Process Tree:
+                               a
+
+Action: a forks b
+Action: a forks c
+Action: b EXITS
+Action: c EXITS
+Action: a forks d
+
+                        Final Process Tree?
+```
+would look like this
+```
+a
+└──d
+```
+Second Try
+```
+E:\proj\cs\hw5600\hw2>python fork.py -s 71 -F
+
+                           Process Tree:
+                               a
+
+Action: a forks b
+Action: b forks c
+Action: c EXITS
+Action: a forks d
+Action: a forks e
+
+                        Final Process Tree?
+```
+would look like this
+```
+a
+└──b
+└──d
+└──e
+```
+
+### Q6
+
+*Q:Use both -t and -F together. This shows the final process
+tree, but then asks you to fill in the actions that took place. By looking at the tree, can you determine the exact actions that took place?
+In which cases can you tell? In which can’t you tell??*
+
+We can see the number of steps and the final process tree. With the given information, we can know that some processed are forked during the program, but unknown of in which order they took place, and who are their parents (because it could be the case that they became orphan processes and re-parented). Only those processes whose parents are not 'a' (or the `init` process) can be determined that their parent once `fork()`ed and got them as children process.
+<br><br>
+For instance,
+```
+E:\proj\cs\hw5600\hw2>python fork.py -s 71 -F -a 10 -t
+
+                           Process Tree:
+                               a
+
+Action?
+Action?
+Action?
+Action?
+Action?
+Action?
+Action?
+Action?
+Action?
+Action?
+
+                        Final Process Tree:
+                               a
+                               ├── b
+                               │   └── h
+                               ├── e
+                               ├── f
+                               │   └── i
+                               └── g
+
+```
+
+We know for sure that there were steps like 
+
+
+```
+b forks h
+```
+
+or 
+
+```
+f forks i
+```
+
+But for the rest part we have no clue yet.
+
+
+
 ## Chapter 5 Code Part
 
 ## Chapter 6

@@ -811,6 +811,10 @@ same time?*
 A: Yes, they both can. And they will both write into the file, ordered by the scheduler (which we cannot predict).
 <br/> The result is in the file `02.dat`. I ran p2 for several times to show the random schedule.
 
+Q3
+
+https://stackoverflow.com/questions/61466564/how-to-make-parent-process-wait-for-child-processes-to-finish
+
 ## Chapter 6
 
 ## Chapter 7

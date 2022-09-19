@@ -792,6 +792,14 @@ the value of x?*
 A: The value of the variable in the child process is the same as it was before the `fork()`, i.e. 100.
 <br /> After the inner change, each variable has the value of what their process changed them into, i.e. in my code it's 99 for the child, 101 in the parent.
 
+```
+mtowya@TowyadeMacBook-Pro hw2 % ./p1
+x in the parent process -init: 100
+x in the parent process -after: 101
+x in the child process -init: 100
+x in the child process -after: 99
+```
+
 ### Q2
 
 *Q:?*

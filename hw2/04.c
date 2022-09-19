@@ -35,9 +35,10 @@ int main() {
                 execlp("/bin/ls", "/bin/ls", addr, NULL);
                 break;
             case 2:
-                // Not sure why this cannot be added
-                //printf("execle:\n");
-                execle("/bin/ls", "ls", addr, NULL);
+                // If you do not have envp as sentinental, then
+                // the following printf will be missed.
+                printf("execle:\n");
+                execle("/bin/ls", "ls", addr, NULL, envp);
                 break;
             case 3:
                 printf("execv:\n");

@@ -818,9 +818,16 @@ print “hello”; the parent process should print “goodbye”. You should
 try to ensure that the child process always prints first; can you do
 this without calling wait() in the parent?*
 
-A: As shown in the `03.c`
+A: As shown in the `03.c`.
 
-https://stackoverflow.com/questions/61466564/how-to-make-parent-process-wait-for-child-processes-to-finish
+### Q4
+
+*Q:Write a program that calls fork() and then calls some form of
+exec() to run the program /bin/ls. See if you can try all of the
+variants of exec(), including (on Linux) execl(), execle(),
+execlp(), execv(), execvp(), and execvpe(). Why do
+you think there are so many variants of the same basic call?
+?*
 
 ## Chapter 6
 

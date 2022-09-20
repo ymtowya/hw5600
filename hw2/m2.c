@@ -28,7 +28,7 @@ int main() {
        exit(-1);
     }
 
-    if (fork < 0) {
+    if (pid < 0) {
         exit(1);
     } else if (pid == 0) {
         // child

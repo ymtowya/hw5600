@@ -48,7 +48,7 @@ int main() {
         gettimeofday(&end, NULL);
     }
 
-    int durationTotal = end.tv_usec - start.tv_usec;
+    double durationTotal = end.tv_usec - start.tv_usec;
     printf("Start: %d - End: %d\nTotal Duration: %d\nAvg Duration: %f\n", start.tv_usec, end.tv_usec, durationTotal, ((0.0 + durationTotal) / loops));
 
     return 0;

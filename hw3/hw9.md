@@ -370,9 +370,12 @@ with a stride scheduler?*
 
 A: 
 
-* As the job length increases, the fairness is rised. <br />
+* As the job length increases, the fairness is rised in general, with little turbulance. <br />
 `mtowya@TowyadeMBP hw3 % python3 graph1.py`
 
 ![9.2.1.png](./9.2.1.png)
 
+* In stride mode, the fairness is steadily raised when the job length is increased.<br />
+`mtowya@TowyadeMBP hw3 % python3 graph2.py`
 
+![9.2.2.png](./9.2.2.png)

@@ -51,15 +51,15 @@ def run():
 
     print(rate)
     
-    fig = plt.figure()
+    # draw
+    figure = plt.figure()
     plt.ylim(0, 101)
-    plt.margins(0)
     plt.xlabel('Length Of Job')
-    plt.ylabel('Unfairness (Average) in percentage (%)')
-    plt.title('Lottery Fairness & Job Length in Stride')
+    plt.ylabel('Fairness in percentage (%)')
+    plt.title('Stride')
     plt.plot(jobLengthOption, rate, color='blue')
     
-    plt.savefig('9.2.2.png', dpi=255)
+    plt.savefig('9.2.2.png')
     plt.show()
 
 run()

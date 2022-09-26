@@ -368,5 +368,11 @@ E:\proj\cs\hw5600\hw3>python ./lottery.py -l 100:100,100:100 -s 3 -c -q 16
 What else would be worth exploring? How would the graph look
 with a stride scheduler?*
 
+A: 
+
+* As the job length increases, the fairness is rised. <br />
+`mtowya@TowyadeMBP hw3 % python3 graph1.py`
+
+![9.2.1.png](./9.2.1.png)
 
 

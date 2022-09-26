@@ -3,6 +3,6 @@
 ## Design
 
 * UML Diagram:
-    + [Data Structure](./evaluate.md)
+    + [Data Structure](./DS.drawio.png)
     + [Algorithm](./evaluate.md)
 * [Evaluate](./evaluate.md)

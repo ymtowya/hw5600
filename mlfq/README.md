@@ -2,5 +2,7 @@
 
 ## Design
 
-* [UML Diagram]()
+* UML Diagram:
+    + [Data Structure](./evaluate.md)
+    + [Algorithm](./evaluate.md)
 * [Evaluate](./evaluate.md)

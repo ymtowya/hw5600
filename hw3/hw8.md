@@ -2,6 +2,8 @@
 
 ## Chapter 8
 
+[Q1](#q1) | [Q2](#q2) | [Q3](#q3) | [Q4](#q4) | [Q5](#q5) | [Q6](#q6) 
+
 ### Q1
 
 *Q:Run a few randomly-generated problems with just two jobs and

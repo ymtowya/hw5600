@@ -2,6 +2,9 @@
 
 ## Chapter 9
 
+
+[Q1](#q1) | [Q2](#q2) | [Q3](#q3) | [Q4](#q4) | [Q5](#q5)
+
 ### Q1
 
 *Q:Compute the solutions for simulations with 3 jobs and random seeds
@@ -368,7 +371,7 @@ E:\proj\cs\hw5600\hw3>python ./lottery.py -l 100:100,100:100 -s 3 -c -q 16
 What else would be worth exploring? How would the graph look
 with a stride scheduler?*
 
-A: 
+A: [graph1.py](./graph1.py) | [graph2.py](./graph2.py)
 
 * As the job length increases, the fairness is rised in general, with little turbulance. <br />
 `mtowya@TowyadeMBP hw3 % python3 graph1.py`

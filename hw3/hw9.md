@@ -379,3 +379,5 @@ A:
 `mtowya@TowyadeMBP hw3 % python3 graph2.py`
 
 ![9.2.2.png](./9.2.2.png)
+
+*In the python code, I referred to the existing blogs for how to use `matplotlib` to draw a graph.*

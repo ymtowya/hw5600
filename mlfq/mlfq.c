@@ -103,7 +103,8 @@ bool isIssueIO(MLFQ_Job* job, timestamp currTime) {
         return false;
     }
     for (int i = 0; i < job->job_io_issue_count; ++i) {
-        if (currTime == job->job_io_issue_time[i]) {
+        if (job->job_run_left_time == job->job_io_issue_time[i]) {
+            job->job_io_issue_time[i] = -1;
             return true;
         }
     }
@@ -249,11 +250,12 @@ int main(int argc, char const *argv[])
     timestamp iotimes[] = {(timestamp) 1};
     MLFQ_Job jobs[] = {
         { .job_id=0, .job_arrive_time=4, .priority=0, .allotTime=INIT_ALLOT, .job_run_left_time=12, .job_io_issue_count=0, .job_io_issue_time=(timestamp *) malloc(sizeof(timestamp))}
-        ,{ .job_id=1, .job_arrive_time=2, .priority=0, .allotTime=INIT_ALLOT, .job_run_left_time=16, .job_io_issue_count=0, .job_io_issue_time=(timestamp *) malloc(sizeof(timestamp))}
+        ,{ .job_id=1, .job_arrive_time=2, .priority=0, .allotTime=INIT_ALLOT, .job_run_left_time=16, .job_io_issue_count=1, .job_io_issue_time=(timestamp *) malloc(sizeof(timestamp))}
         ,{ .job_id=2, .job_arrive_time=6, .priority=0, .allotTime=INIT_ALLOT, .job_run_left_time=11, .job_io_issue_count=0, .job_io_issue_time=(timestamp *) malloc(sizeof(timestamp))}
         ,{ .job_id=3, .job_arrive_time=10, .priority=0, .allotTime=INIT_ALLOT, .job_run_left_time=20, .job_io_issue_count=0, .job_io_issue_time=(timestamp *) malloc(sizeof(timestamp))}
         ,{ .job_id=4, .job_arrive_time=1, .priority=0, .allotTime=INIT_ALLOT, .job_run_left_time=5, .job_io_issue_count=0, .job_io_issue_time=(timestamp *) malloc(sizeof(timestamp))}
     };
+    jobs[1].job_io_issue_time[0] = 7;
     job_queue = jobs;
     job_count = 5;
     run(400);

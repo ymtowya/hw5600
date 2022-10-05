@@ -93,47 +93,50 @@ Job[2] runs
 time[41] : 
 Job[3] runs
 time[42] : 
-Job[1] runs
-Job[1] is downgraded to priority [2]
-time[43] : 
+Job[1] issues IO
+time[42] : 
 Job[0] runs
 Job[0] is downgraded to priority [2]
-time[44] : 
+time[43] : 
 Job[2] runs
 Job[2] is downgraded to priority [2]
-time[45] : 
+time[44] : 
 Job[3] runs
 Job[3] is downgraded to priority [2]
-time[46] : 
-Job[1] runs
-time[47] : 
+time[45] : 
 Job[0] runs
-time[48] : 
+time[46] : 
 Job[2] is completed
+time[47] : 
+Job[1] is added
+Job[1] runs
+Job[1] is downgraded to priority [1]
+time[48] : 
+Job[1] runs
 time[49] : 
 Job[1] runs
 time[50] : 
-Job[0] is completed
+Job[1] runs
 time[51] : 
 Job[1] runs
 time[52] : 
-Job[3] runs
-time[53] : 
 Job[1] runs
+Job[1] is downgraded to priority [2]
+time[53] : 
+Job[0] is completed
 time[54] : 
 Job[3] runs
 time[55] : 
-Job[1] runs
-Job[1] is downgraded to priority [3]
+Job[1] is completed
 time[56] : 
 Job[3] runs
 time[57] : 
 Job[3] runs
 time[58] : 
 Job[3] runs
-Job[3] is downgraded to priority [3]
 time[59] : 
-Job[1] is completed
+Job[3] runs
+Job[3] is downgraded to priority [3]
 time[60] : 
 Job[3] runs
 time[61] : 

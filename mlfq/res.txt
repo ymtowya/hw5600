@@ -1,0 +1,149 @@
+/-----------------------/
+/------------INIT-----------/
+time[0] : 
+time[1] : 
+Job[4] is added
+Job[4] runs
+time[2] : 
+Job[1] is added
+Job[4] runs
+time[3] : 
+Job[1] runs
+time[4] : 
+Job[0] is added
+Job[4] runs
+time[5] : 
+Job[1] runs
+time[6] : 
+Job[2] is added
+Job[0] runs
+time[7] : 
+Job[2] runs
+time[8] : 
+Job[4] runs
+time[9] : 
+Job[1] runs
+time[10] : 
+Job[3] is added
+Job[0] runs
+time[11] : 
+Job[2] runs
+time[12] : 
+Job[3] runs
+time[13] : 
+Job[4] is completed
+time[14] : 
+Job[1] runs
+time[15] : 
+Job[0] runs
+time[16] : 
+Job[2] runs
+time[17] : 
+Job[3] runs
+time[18] : 
+Job[1] runs
+Job[1] is downgraded to priority [1]
+time[19] : 
+Job[0] runs
+time[20] : 
+Job[2] runs
+time[21] : 
+Job[3] runs
+time[22] : 
+Job[0] runs
+Job[0] is downgraded to priority [1]
+time[23] : 
+Job[2] runs
+Job[2] is downgraded to priority [1]
+time[24] : 
+Job[3] runs
+time[25] : 
+Job[3] runs
+Job[3] is downgraded to priority [1]
+time[26] : 
+Job[1] runs
+time[27] : 
+Job[0] runs
+time[28] : 
+Job[2] runs
+time[29] : 
+Job[3] runs
+time[30] : 
+Job[1] runs
+time[31] : 
+Job[0] runs
+time[32] : 
+Job[2] runs
+time[33] : 
+Job[3] runs
+time[34] : 
+Job[1] runs
+time[35] : 
+Job[0] runs
+time[36] : 
+Job[2] runs
+time[37] : 
+Job[3] runs
+time[38] : 
+Job[1] runs
+time[39] : 
+Job[0] runs
+time[40] : 
+Job[2] runs
+time[41] : 
+Job[3] runs
+time[42] : 
+Job[1] runs
+Job[1] is downgraded to priority [2]
+time[43] : 
+Job[0] runs
+Job[0] is downgraded to priority [2]
+time[44] : 
+Job[2] runs
+Job[2] is downgraded to priority [2]
+time[45] : 
+Job[3] runs
+Job[3] is downgraded to priority [2]
+time[46] : 
+Job[1] runs
+time[47] : 
+Job[0] runs
+time[48] : 
+Job[2] is completed
+time[49] : 
+Job[1] runs
+time[50] : 
+Job[0] is completed
+time[51] : 
+Job[1] runs
+time[52] : 
+Job[3] runs
+time[53] : 
+Job[1] runs
+time[54] : 
+Job[3] runs
+time[55] : 
+Job[1] runs
+Job[1] is downgraded to priority [3]
+time[56] : 
+Job[3] runs
+time[57] : 
+Job[3] runs
+time[58] : 
+Job[3] runs
+Job[3] is downgraded to priority [3]
+time[59] : 
+Job[1] is completed
+time[60] : 
+Job[3] runs
+time[61] : 
+Job[3] runs
+time[62] : 
+Job[3] runs
+time[63] : 
+Job[3] runs
+time[64] : 
+Job[3] is completed
+time[65] : 
+FINISHED
+/-----------------------/

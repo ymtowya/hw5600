@@ -1,7 +1,7 @@
 
 typedef unsigned int timestamp;
 
-typedef struct 
+typedef struct MLFQ_Job
 {
     /* data */
     int job_id;
@@ -14,7 +14,7 @@ typedef struct
     MLFQ_Job* next;
 } MLFQ_Job;
 
-typedef struct
+typedef struct MLFQ_Job_Queue
 {
     /* data */
     int queue_id;
@@ -24,7 +24,7 @@ typedef struct
     MLFQ_Job* tail;
 } MLFQ_Job_Queue;
 
-typedef struct
+typedef struct MLFQ_Processor
 {
     /* data */
     MLFQ_Job_Queue* header;

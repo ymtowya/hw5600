@@ -104,7 +104,7 @@ bool isIssueIO(MLFQ_Job* job, timestamp currTime) {
     }
     for (int i = 0; i < job->job_io_issue_count; ++i) {
         if (job->job_run_left_time == job->job_io_issue_time[i]) {
-            job->job_io_issue_time[i] = -1;
+            job->job_io_issue_time[i] = -5;
             return true;
         }
     }

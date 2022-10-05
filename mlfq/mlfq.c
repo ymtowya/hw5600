@@ -14,13 +14,46 @@
     #define false 0
 #endif
 
+typedef unsigned int timestamp;
+
+typedef struct MLFQ_Job
+{
+    /* data */
+    int job_id;
+    timestamp job_arrive_time;
+    int job_run_left_time;
+    timestamp* job_io_issue_time;
+    int job_io_issue_count;
+    int allotTime;
+    int priority;
+    struct MLFQ_Job* next;
+} MLFQ_Job;
+
+typedef struct MLFQ_Job_Queue
+{
+    /* data */
+    int queue_id;
+    int priority;
+    int quantum_time;
+    MLFQ_Job* header;
+    MLFQ_Job* tail;
+} MLFQ_Job_Queue;
+
+typedef struct MLFQ_Processor
+{
+    /* data */
+    MLFQ_Job_Queue* header;
+    int queue_count;
+} MLFQ_Processor;
+
+
 typedef int bool;
 
 #define HIGHEST_PRIORITY 0
 #define IO_COST_TIME 5
 #define INIT_ALLOT 5
 
-int job_count = 10;
+int job_count = 5;
 MLFQ_Job *job_queue;
 MLFQ_Processor* processor;
 
@@ -29,8 +62,14 @@ void addNewProcess(timestamp currTime) {
         if ((job_queue + i)->job_arrive_time == currTime) {
             // add the job
             MLFQ_Job* tailJob = processor->header->tail;
-            tailJob->next = job_queue + i;
-            processor->header->tail = job_queue + i;
+            if (tailJob == NULL) {
+                processor->header->header = job_queue + i;
+                processor->header->tail = job_queue + i;
+            } else {
+                tailJob->next = job_queue + i;
+                processor->header->tail = job_queue + i;
+            }
+            printf("Job[%d] is added\n", (job_queue + i)->job_id);
             (job_queue + i)->priority = HIGHEST_PRIORITY;
             (job_queue + i)->next = NULL;
         }
@@ -107,7 +146,7 @@ bool addJobToQueue(MLFQ_Job* job, MLFQ_Job_Queue* queue) {
         return false;
     }
     MLFQ_Job* currTail = queue->tail;
-    if (currTail = NULL) {
+    if (currTail == NULL) {
         queue->header = job;
         queue->tail = job;
     } else {
@@ -127,7 +166,7 @@ MLFQ_Job_Queue* getQueueByPriority(int priority) {
     return processor->header + priority - HIGHEST_PRIORITY;
 }
 
-void run(int totalTime) {
+void run(timestamp totalTime) {
     timestamp currTime = 0;
     MLFQ_Job* currJobPt = NULL;
     MLFQ_Job_Queue* currQueue = NULL;
@@ -139,15 +178,21 @@ void run(int totalTime) {
         // check J
         if (currJobPt == NULL) {
             currQueue = getHighestJobQueue();
-            if (currQueue != NULL) {
+            if (currQueue != NULL && currQueue->header != NULL) {
                 currJobPt = currQueue->header;
             } else if (!hasJobComingFuture(currTime, totalTime)) {
                 printf("FINISHED\n");
                 break;
+            } else {
+                ++currTime;
+                continue;
             }
         }
         // operate J
-        if (isIssueIO(currJobPt, currTime)) {
+        if (currJobPt == NULL) {
+            ++currTime;
+            continue;
+        } else if (isIssueIO(currJobPt, currTime)) {
             printf("Job[%d] issues IO\n", currJobPt->job_id);
             currJobPt->job_arrive_time = currTime + IO_COST_TIME;
             MLFQ_Job* tmpNext = currJobPt->next;
@@ -201,12 +246,13 @@ int main(int argc, char const *argv[])
         (processor->header + i)->header = NULL;
         (processor->header + i)->tail = NULL;
     }
+    timestamp iotimes[] = {(timestamp) 1};
     MLFQ_Job jobs[] = {
-        { .job_id=0, .job_arrive_time=4, .priority=0, .allotTime=INIT_ALLOT, .job_run_left_time=12, .job_io_issue_count=0, .job_io_issue_count=NULL}
-        ,{ .job_id=1, .job_arrive_time=2, .priority=0, .allotTime=INIT_ALLOT, .job_run_left_time=16, .job_io_issue_count=0, .job_io_issue_count=NULL}
-        ,{ .job_id=2, .job_arrive_time=6, .priority=0, .allotTime=INIT_ALLOT, .job_run_left_time=11, .job_io_issue_count=0, .job_io_issue_count=NULL}
-        ,{ .job_id=3, .job_arrive_time=10, .priority=0, .allotTime=INIT_ALLOT, .job_run_left_time=20, .job_io_issue_count=0, .job_io_issue_count=NULL}
-        ,{ .job_id=4, .job_arrive_time=1, .priority=0, .allotTime=INIT_ALLOT, .job_run_left_time=5, .job_io_issue_count=0, .job_io_issue_count=NULL}
+        { .job_id=0, .job_arrive_time=4, .priority=0, .allotTime=INIT_ALLOT, .job_run_left_time=12, .job_io_issue_count=0, .job_io_issue_time=(timestamp *) malloc(sizeof(timestamp))}
+        ,{ .job_id=1, .job_arrive_time=2, .priority=0, .allotTime=INIT_ALLOT, .job_run_left_time=16, .job_io_issue_count=0, .job_io_issue_time=(timestamp *) malloc(sizeof(timestamp))}
+        ,{ .job_id=2, .job_arrive_time=6, .priority=0, .allotTime=INIT_ALLOT, .job_run_left_time=11, .job_io_issue_count=0, .job_io_issue_time=(timestamp *) malloc(sizeof(timestamp))}
+        ,{ .job_id=3, .job_arrive_time=10, .priority=0, .allotTime=INIT_ALLOT, .job_run_left_time=20, .job_io_issue_count=0, .job_io_issue_time=(timestamp *) malloc(sizeof(timestamp))}
+        ,{ .job_id=4, .job_arrive_time=1, .priority=0, .allotTime=INIT_ALLOT, .job_run_left_time=5, .job_io_issue_count=0, .job_io_issue_time=(timestamp *) malloc(sizeof(timestamp))}
     };
     job_queue = jobs;
     job_count = 5;

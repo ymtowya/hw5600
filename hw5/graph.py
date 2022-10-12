@@ -5,7 +5,7 @@ import random
 import matplotlib.pyplot as plt
 import numpy as np
 
-loops = 200
+loops = 400
 asize = 1024
 psize = 2 * 1024
 resList = [0.0] * asize
@@ -26,6 +26,6 @@ plt.plot(x, [u for u in resList], color='blue')
 plt.ylim(0, 100)
 # plt.margins(0)
 plt.xlabel('Limit')
-plt.ylabel('Valid fraction (Average)')
+plt.ylabel('Valid Fraction')
 plt.savefig('valid_fraction.png', dpi=227)
 plt.show()

@@ -1,9 +1,7 @@
 #! /usr/bin/env python3
-
-import random
-
 import matplotlib.pyplot as plt
 import numpy as np
+import random
 
 loops = 400
 asize = 1024
@@ -24,8 +22,7 @@ fig = plt.figure()
 x = np.linspace(1, asize, asize)
 plt.plot(x, [u for u in resList], color='blue')
 plt.ylim(0, 100)
-# plt.margins(0)
 plt.xlabel('Limit')
-plt.ylabel('Valid Fraction')
+plt.ylabel('Valid Fraction (%)')
 plt.savefig('valid_fraction.png', dpi=227)
 plt.show()

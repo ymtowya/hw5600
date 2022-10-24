@@ -49,11 +49,12 @@ def worstFit(freeHead, memoRecord, size):
     return [False, -1, -1, loop]
 
 memoRecord = {}
-freeHead = Node(-1, -1, Node(0, 2048, None))
+total_space = 2048 # total space
+freeHead = Node(-1, -1, Node(0, total_space, None))
 starts = []
 process = [200, 100, 30, 40, 170, 500, 60, 90, 110, 80, 150, 65, 70, 50]
 random.shuffle(process)
-prob_alloc = 60
+prob_alloc = 80 # probability of allocating
 loop_times = 30
 
 alloc_count = 0
@@ -76,7 +77,7 @@ for i in range(loop_times):
         start = random.choice(list(memoRecord))
         size = memoRecord[start]
         free(start, freeHead, memoRecord)
-        print('- Free Space:\nStart from {start} with Size of {size}\n'.format(
+        print('+ Free Space:\nStart from {start} with Size of {size}\n'.format(
             start = start, size = size
         ))
 
@@ -84,12 +85,12 @@ print('\n\nFree Space List are like :\n')
 print(getListStr(freeHead))
 
 stats_str = ('\n\nEvaluation:\nTotal alloc attempts are {alloc} times.\n'
-    'Succeded for {succ} times. Success Rate : {succ_r}\n' + 
+    'Succeded for {succ} times. Success Rate : {succ_r} %\n' + 
     'Total Loops {loop}. Loop per attempt is {loop_r} times.\n').format(
         alloc = alloc_count,
         succ = succ_count,
         loop = loop_count,
-        succ_r = (0.00 + succ_count) / alloc_count,
+        succ_r = (0.00 + succ_count) / alloc_count * 100.00,
         loop_r = (0.00 + loop_count) / alloc_count
     )
 

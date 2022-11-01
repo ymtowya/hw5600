@@ -1,3 +1,8 @@
+/**
+ * ubuntu@VM-4-8-ubuntu:~/hw/swap$ g++ ./swap.cpp
+ * ubuntu@VM-4-8-ubuntu:~/hw/swap$ ./a.out
+*/
+
 #include <cstdlib>
 #include <iostream>
 #include <string>

@@ -1,6 +1,6 @@
 /**
  * ubuntu@VM-4-8-ubuntu:~/hw/swap$ g++ ./swap.cpp
- * ubuntu@VM-4-8-ubuntu:~/hw/swap$ ./a.out
+ * ubuntu@VM-4-8-ubuntu:~/hw/swap$ ./a.out < ./swap.in
 */
 
 #include <cstdlib>

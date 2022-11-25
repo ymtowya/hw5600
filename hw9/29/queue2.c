@@ -8,6 +8,19 @@
 #define TIMES 10000
 #define NUMS 3
 
+long getInterval(struct timeval start, struct timeval end) {
+    long seconds = end.tv_sec - start.tv_sec;
+    long micro_seconds = end.tv_usec - start.tv_usec;
+
+    if (micro_seconds < 0)
+    {
+        seconds -= 1;
+    }
+
+    long total_micro_seconds = (seconds * 1000000) + abs(micro_seconds);
+    return total_micro_seconds;
+}
+
 typedef struct node_t {
     int value;
     struct node_t *next;
@@ -101,7 +114,7 @@ int main(int argc, char const *argv[])
         doOut(&q);
 
         printf("interval: %ld\n",
-            time_2.tv_usec - time_1.tv_usec);
+            (long) getInterval(time_1, time_2));
             
     }
 

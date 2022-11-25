@@ -4,6 +4,7 @@
 #include <pthread.h>
 #include <assert.h>
 #include <sched.h>
+#include <sys/time.h> // gettimeofday
 
 #ifdef __linux__
 #include <semaphore.h>
